@@ -1,0 +1,15 @@
+
+spring:
+  application:
+    name: hsvc
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+eureka:
+  client:
+    enabled: true
+    service-url: http://localhost:23001/eureka/
+    register-with-eureka: true
+    fetch-registry: true
