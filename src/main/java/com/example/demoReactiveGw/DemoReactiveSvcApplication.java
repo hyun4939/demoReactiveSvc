@@ -1,5 +1,7 @@
 package com.example.demoReactiveGw;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -10,6 +12,7 @@ import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.HttpHeaders;
 
 import org.springframework.http.server.reactive.ServerHttpRequest;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -19,6 +22,8 @@ import reactor.core.publisher.Flux;
 import reactor.netty.http.server.HttpServerRequest;
 
 import java.nio.charset.StandardCharsets;
+import java.util.HashMap;
+import java.util.Map;
 
 
 @Slf4j
@@ -31,9 +36,16 @@ public class DemoReactiveSvcApplication {
 		SpringApplication.run(DemoReactiveSvcApplication.class, args);
 	}
 
-	@RequestMapping("test")
+	@GetMapping("/hsvc/test2")
 	public String test(){
-		return "{\"test\":\"--\"}";
+		Map<String,String> result = new HashMap<>();
+		result.put("test","^^");
+
+		Gson gson = new Gson();
+
+
+
+		return gson.toJson(result);
 	}
 
 	@SneakyThrows
@@ -63,10 +75,10 @@ public class DemoReactiveSvcApplication {
 			buffer.read(bytes);
 			String bodyString2 = new String(bytes, StandardCharsets.UTF_8);
 			log.info("===> {}",bodyString2);
-			buffer.readPosition(0);
+//			buffer.readPosition(0);
 //			DataBufferUtils.release(buffer);
-			String bodyString = new String(bytes, StandardCharsets.UTF_8);
-			sb.append(bodyString);
+//			String bodyString = new String(bytes, StandardCharsets.UTF_8);
+			sb.append(bodyString2);
 		});
 
 

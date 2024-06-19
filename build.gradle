@@ -1,3 +1,7 @@
+buildscript{
+	apply from: 'versions.gradle'
+}
+
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.2.1'
@@ -27,6 +31,17 @@ dependencies {
 
 	annotationProcessor('org.projectlombok:lombok')
 	compileOnly('org.projectlombok:lombok')
+	implementation 'org.projectlombok:lombok'
+
+	// https://mvnrepository.com/artifact/com.google.code.gson/gson
+	implementation 'com.google.code.gson:gson:2.11.0'
+
+
+	testImplementation test.junit
+	testImplementation test.junit_api
+	testImplementation test.junit_engine
+	testImplementation test.junit_params
+	testImplementation test.junit_launcher
 }
 
 dependencyManagement {
