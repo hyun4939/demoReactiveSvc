@@ -31,10 +31,17 @@ public class DemoReactiveSvcApplication {
 		SpringApplication.run(DemoReactiveSvcApplication.class, args);
 	}
 
+
+
+
+
 	@RequestMapping("test")
 	public String test(){
 		return "{\"test\":\"--\"}";
 	}
+
+
+
 
 	@SneakyThrows
 	@RequestMapping("/hsvc/test")
@@ -50,6 +57,10 @@ public class DemoReactiveSvcApplication {
 		log.info("---- {} {} ",test, test2 );
 		return "tt/hsvc/test/hsvc/test/hsvc/testt";
 	}
+
+
+
+
 
 
 	private String resolveBodyFromRequest(ServerHttpRequest serverHttpRequest){
