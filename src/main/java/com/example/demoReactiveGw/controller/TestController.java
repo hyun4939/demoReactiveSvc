@@ -16,7 +16,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ServerWebExchange;
 import reactor.core.publisher.Flux;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
+import java.util.List;
 import java.util.Map;
 
 @Slf4j
@@ -42,6 +44,31 @@ public class TestController {
         log.info("---- cacert:{}, cert:{}, key:{} ",cacert, cert , key);
         Map<String,String> result = Map.of("cacert",cacert,"cert",cert,"key",key);
         Gson gson = new Gson();
+
+//        List<String> chiper = List.of("TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256",
+//                "TLS_ECDHE_ECDSA_WITH_CHACHA20_POLY1305_SHA256",
+//                "TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256",
+//                "TLS_ECDHE_RSA_WITH_CHACHA20_POLY1305_SHA256",
+//                "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA256",
+//                "TLS_ECDHE_ECDSA_WITH_AES_128_CBC_SHA",
+//                "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256",
+//                "TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA",
+//                "TLS_RSA_WITH_AES_128_GCM_SHA256",
+//                "TLS_RSA_WITH_AES_128_CBC_SHA256",
+//                "TLS_RSA_WITH_AES_128_CBC_SHA",
+//                "TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384",
+//                "TLS_ECDHE_ECDSA_WITH_AES_256_CBC_SHA384",
+//                "TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384",
+//                "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384",
+//                "TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA",
+//                "TLS_RSA_WITH_AES_256_GCM_SHA384",
+//                "TLS_RSA_WITH_AES_256_CBC_SHA256",
+//                "TLS_RSA_WITH_AES_256_CBC_SHA",
+//                "TLS_RSA_WITH_3DES_EDE_CBC_SHA",
+//                "TLS_AES_128_GCM_SHA256",
+//                "TLS_AES_256_GCM_SHA384",
+//                "TLS_CHACHA20_POLY1305_SHA256");
+//        dynamicTlsNettyFactory.updateMtlsSettings(new File(cert), new File(key), new File(cacert), chiper, new String[]{"TLSv1.2","TLSv1.3"} );
 
         return gson.toJson(result);
     }
